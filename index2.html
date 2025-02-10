@@ -1,5 +1,6 @@
 <div class="image-container">
     <img src="https://raw.githubusercontent.com/myhowngym/Image-1/main/votre-image.jpg" alt="Image Zoom" class="zoom-image">
+    <div class="overlay"></div> <!-- Overlay pour surbrillance -->
     <div class="image-text">CHF 119,90/SÉANCE</div>
 </div>
 
@@ -15,13 +16,28 @@
     /* Image qui peut être zoomée */
     .zoom-image {
         width: 100%;
-        transition: transform 0.3s ease, filter 0.3s ease;
+        transition: transform 0.3s ease;
     }
 
-    /* Effet de zoom et surbrillance au survol */
+    /* Effet de zoom au survol */
     .image-container:hover .zoom-image {
         transform: scale(1.2); /* Zoom à 120% */
-        filter: brightness(120%); /* Surbrillance (luminosité augmentée) */
+    }
+
+    /* Surbrillance au survol (overlay lumineux) */
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.3); /* Surbrillance lumineuse */
+        visibility: hidden;
+        transition: visibility 0s, background 0.3s ease;
+    }
+
+    .image-container:hover .overlay {
+        visibility: visible;
     }
 
     /* Texte avec fond mat qui est caché par défaut */
