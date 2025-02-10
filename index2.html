@@ -1,8 +1,9 @@
 <div class="image-container">
-    <img src="https://raw.githubusercontent.com/myhowngym/Image-2/main/moi 2.jpg" alt="Image Zoom" class="zoom-image">
-    <div class="image-text">CHF 109,90/SÉANCE</div>
-    <!-- Texte ajouté pour "Pack 10 séances" -->
-    <div class="image-pack"><span class="pack">Pack 10</span> <span class="seances">Séances</span></div>
+    <img src="https://raw.githubusercontent.com/myhowngym/Image-1/main/votre-image.jpg" alt="Image Zoom" class="zoom-image">
+    <div class="image-overlay"></div> <!-- Overlay sombre sur le haut de l'image -->
+    <div class="image-text">CHF 119,90/SÉANCE</div>
+    <!-- Texte ajouté pour "Pack 5 séances" -->
+    <div class="image-pack"><span class="pack">Pack 5</span> <span class="seances">Séances</span></div>
 </div>
 
 <style>
@@ -20,10 +21,21 @@
         transition: transform 0.3s ease, filter 0.3s ease;
     }
 
-    /* Effet de zoom et surbrillance au survol */
+    /* Effet de zoom au survol */
     .image-container:hover .zoom-image {
         transform: scale(1.2); /* Zoom à 120% */
-        filter: brightness(50%) !important; /* Surbrillance (luminosité augmentée) */
+        filter: brightness(50%) !important; /* Appliquer un fond mat (réduire la luminosité) au survol */
+    }
+
+    /* Overlay sombre permanent en haut de l'image */
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 40%;  /* Ajuste la hauteur de l'overlay */
+        background: rgba(0, 0, 0, 0.4);  /* Couleur sombre avec transparence */
+        z-index: 1;  /* S'assurer que l'overlay est au-dessus de l'image */
     }
 
     /* Texte avec fond mat qui est caché par défaut */
@@ -56,10 +68,11 @@
         transform: translateX(-50%);
         color: white;
         font-family: 'Lato', sans-serif;
-        font-size: 40px;
+        font-size: 14px;  /* Taille de police réduite (ajustée à 14px) */
         font-weight: bold;
         transition: font-size 0.3s ease;  /* Transition pour l'agrandissement */
         white-space: nowrap; /* Pour que le texte reste sur une seule ligne */
+        z-index: 2;  /* S'assurer que le texte est au-dessus de l'overlay */
     }
 
     /* Style spécifique pour chaque partie du texte */
@@ -67,8 +80,8 @@
         margin-right: 5px; /* Un petit espace entre "Pack 5" et "Séances" */
     }
 
-    /* Agrandissement du texte au survol */
+    /* Agrandissement du texte au survol (moins prononcé) */
     .image-container:hover .image-pack {
-        font-size: 30px;  /* Agrandir le texte au survol */
+        font-size: 16px;  /* Taille d'agrandissement modeste (16px au survol) */
     }
 </style>
