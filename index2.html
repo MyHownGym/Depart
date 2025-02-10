@@ -1,7 +1,8 @@
 <div class="image-container">
     <img src="https://raw.githubusercontent.com/myhowngym/Image-2/main/moi 2.jpg" alt="Image Zoom" class="zoom-image">
-    <div class="overlay"></div> <!-- Overlay pour surbrillance -->
     <div class="image-text">CHF 109,90/SÉANCE</div>
+    <!-- Texte ajouté pour "Pack 10 séances" -->
+    <div class="image-pack"><span class="pack">Pack 5</span> <span class="seances">Séances</span></div>
 </div>
 
 <style>
@@ -16,28 +17,13 @@
     /* Image qui peut être zoomée */
     .zoom-image {
         width: 100%;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, filter 0.3s ease;
     }
 
-    /* Effet de zoom au survol */
+    /* Effet de zoom et surbrillance au survol */
     .image-container:hover .zoom-image {
         transform: scale(1.2); /* Zoom à 120% */
-    }
-
-    /* Surbrillance au survol (overlay lumineux) */
-    .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.3); /* Surbrillance lumineuse */
-        visibility: hidden;
-        transition: visibility 0s, background 0.3s ease;
-    }
-
-    .image-container:hover .overlay {
-        visibility: visible;
+        filter: brightness(120%) !important; /* Surbrillance (luminosité augmentée) */
     }
 
     /* Texte avec fond mat qui est caché par défaut */
@@ -60,5 +46,29 @@
     .image-container:hover .image-text {
         visibility: visible;
         opacity: 1;  /* Afficher le texte au survol */
+    }
+
+    /* Texte "Pack 5 séances" toujours visible */
+    .image-pack {
+        position: absolute;
+        top: 20px;  /* Décale le texte vers le haut de l'image */
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-family: 'Lato', sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        transition: font-size 0.3s ease;  /* Transition pour l'agrandissement */
+        white-space: nowrap; /* Pour que le texte reste sur une seule ligne */
+    }
+
+    /* Style spécifique pour chaque partie du texte */
+    .image-pack .pack {
+        margin-right: 5px; /* Un petit espace entre "Pack 5" et "Séances" */
+    }
+
+    /* Agrandissement du texte au survol */
+    .image-container:hover .image-pack {
+        font-size: 30px;  /* Agrandir le texte au survol */
     }
 </style>
